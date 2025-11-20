@@ -64,9 +64,9 @@ const Login: React.FC = () => {
             </Button>
           </div>
 
-          <div className="mt-6 text-center text-xs text-gray-500 border-t border-gray-700 pt-4">
-            <strong className="block text-gray-400 mb-1 uppercase tracking-wide">Accesso Riservato</strong>
-            <p>
+          <div className="mt-6 text-center text-xs text-gray-500 border-t border-gray-700 pt-4 bg-gray-800/50 rounded p-2">
+            <strong className="block text-red-500 mb-2 uppercase tracking-wide font-bold">Accesso Riservato</strong>
+            <p className="leading-relaxed">
               L'accesso è consentito esclusivamente agli utenti autorizzati. Qualsiasi tentativo di intrusione, forzatura o elusione dei sistemi di sicurezza sarà tracciato e perseguito a norma di legge.
             </p>
           </div>

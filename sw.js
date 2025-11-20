@@ -1,11 +1,11 @@
 
 // A simple service worker for caching app assets
 
-const CACHE_NAME = 'oriented117-cache-v1';
+const CACHE_NAME = 'oriented117-cache-v2';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/index.tsx'
+  './',
+  './index.html',
+  './index.tsx'
   // NOTE: In a real build process, you would add all your JS/CSS bundles here.
   // For this esbuild setup, caching the entry points is a good start.
 ];

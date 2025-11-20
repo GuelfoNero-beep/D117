@@ -36,9 +36,9 @@ export const MOCK_EVENTS: Event[] = [
 ];
 
 export const MOCK_AUDIO_GUIDES: AudioGuide[] = [
-  { id: 'ag01', nomeFile: 'Introduzione al Simbolismo', urlAudio: '/audio/sample1.mp3', urlImmagine: 'https://picsum.photos/seed/audio1/300/300', ordinamento: 1 },
-  { id: 'ag02', nomeFile: 'La Storia della Loggia', urlAudio: '/audio/sample2.mp3', urlImmagine: 'https://picsum.photos/seed/audio2/300/300', ordinamento: 2 },
-  { id: 'ag03', nomeFile: 'Meditazione Guidata', urlAudio: '/audio/sample3.mp3', urlImmagine: 'https://picsum.photos/seed/audio3/300/300', ordinamento: 3 },
+  { id: 'ag01', nomeFile: 'Introduzione al Simbolismo', urlAudio: 'audio/sample1.mp3', urlImmagine: 'https://picsum.photos/seed/audio1/300/300', ordinamento: 1 },
+  { id: 'ag02', nomeFile: 'La Storia della Loggia', urlAudio: 'audio/sample2.mp3', urlImmagine: 'https://picsum.photos/seed/audio2/300/300', ordinamento: 2 },
+  { id: 'ag03', nomeFile: 'Meditazione Guidata', urlAudio: 'audio/sample3.mp3', urlImmagine: 'https://picsum.photos/seed/audio3/300/300', ordinamento: 3 },
 ];
 
 export const MOCK_DIRECTORY: DirectoryMember[] = [
@@ -54,7 +54,7 @@ export const MOCK_USEFUL_REFERENCES: UsefulReference[] = [
   { id: 'ref01', titolo: 'Statuto della Loggia', descrizione: 'Il regolamento interno che disciplina i lavori e la condotta dei fratelli.' },
   { id: 'ref02', titolo: 'Calendario dei Lavori', descrizione: 'Documento PDF scaricabile con le date di tutte le tornate dell\'anno in corso.' },
   { id: 'ref03', titolo: 'Contatti Segreteria', descrizione: 'Email: segreteria@dante117.it - Telefono urgenze: 333-0000000' },
-  { id: 'ref04', titolo: 'Codice IBAN Tesoreria', descrizione: 'IT00 X000 0000 0000 0000 0000 000 - Intestato a Associazione Culturale Dante' },
+  { id: 'ref04', titolo: 'Codice IBAN Tesoreria', descrizione: 'IT00 X000 0000 0000 0000 0000 0000 000 - Intestato a Associazione Culturale Dante' },
   { id: 'ref05', titolo: 'Procedura di Tegolatura', descrizione: 'Linee guida per l\'accoglienza dei fratelli visitatori.' },
   { id: 'ref06', titolo: 'Link Gran Loggia', descrizione: 'www.grandeloggia.it - Portale ufficiale.' },
   { id: 'ref07', titolo: 'Emergenze', descrizione: 'Procedura di evacuazione del Tempio in caso di incendio.' },
