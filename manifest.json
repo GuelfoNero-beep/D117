@@ -1,0 +1,22 @@
+
+{
+  "short_name": "OrienteD117",
+  "name": "Oriente D117",
+  "description": "App per la Loggia Dante 117 all'Oriente di Firenze",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#D97706",
+  "background_color": "#111827"
+}
