@@ -1,7 +1,8 @@
+
 import React, { useState, useEffect } from 'react';
-import { User, UserRole } from '../../../types';
-import Button from '../../ui/Button';
-import Input from '../../ui/Input';
+import { User, UserRole } from '../../../types.ts';
+import Button from '../../ui/Button.tsx';
+import Input from '../../ui/Input.tsx';
 
 interface UserFormProps {
     user: User | Omit<User, 'uid'> | null;
@@ -58,7 +59,6 @@ const UserForm: React.FC<UserFormProps> = ({ user, onSave, onCancel }) => {
         </div>
     );
 };
-
 
 interface UserManagementProps {
     users: User[];

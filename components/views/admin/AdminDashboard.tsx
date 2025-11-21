@@ -1,11 +1,11 @@
 
 import React, { useState } from 'react';
-import { User, Event, AudioGuide, DirectoryMember, UsefulReference } from '../../../types';
-import UserManagement from './UserManagement';
-import EventManagement from './EventManagement';
-import AudioGuideManagement from './AudioGuideManagement';
-import DirectoryManagement from './DirectoryManagement';
-import UsefulReferenceManagement from './UsefulReferenceManagement';
+import { User, Event, AudioGuide, DirectoryMember, UsefulReference } from '../../../types.ts';
+import UserManagement from './UserManagement.tsx';
+import EventManagement from './EventManagement.tsx';
+import AudioGuideManagement from './AudioGuideManagement.tsx';
+import DirectoryManagement from './DirectoryManagement.tsx';
+import UsefulReferenceManagement from './UsefulReferenceManagement.tsx';
 
 type AdminTab = 'users' | 'events' | 'audio' | 'directory' | 'references';
 

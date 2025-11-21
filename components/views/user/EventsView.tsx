@@ -1,9 +1,9 @@
 
 import React, { useContext, useMemo } from 'react';
-import { Event, Booking } from '../../../types';
-import { AuthContext } from '../../../contexts/AuthContext';
-import { formatDateRange, generateICSFile } from '../../../lib/utils';
-import Button from '../../ui/Button';
+import { Event, Booking } from '../../../types.ts';
+import { AuthContext } from '../../../contexts/AuthContext.ts';
+import { formatDateRange, generateICSFile } from '../../../lib/utils.ts';
+import Button from '../../ui/Button.tsx';
 
 const EventCard: React.FC<{ event: Event; onBook: (event: Event) => void; isBooked: boolean }> = ({ event, onBook, isBooked }) => {
   return (
@@ -20,7 +20,6 @@ const EventCard: React.FC<{ event: Event; onBook: (event: Event) => void; isBook
     </div>
   );
 };
-
 
 interface EventsViewProps {
   events: Event[];

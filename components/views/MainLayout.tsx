@@ -1,21 +1,21 @@
 
 import React, { useState, useContext } from 'react';
-import { AuthContext } from '../../contexts/AuthContext';
-import { User, UserRole, Event, AudioGuide, DirectoryMember, Booking, UsefulReference } from '../../types';
-import Button from '../ui/Button';
-import SquareCompassIcon from '../icons/SquareCompassIcon';
-import CalendarIcon from '../icons/CalendarIcon';
-import MusicIcon from '../icons/MusicIcon';
-import UsersIcon from '../icons/UsersIcon';
-import SettingsIcon from '../icons/SettingsIcon';
-import MenuIcon from '../icons/MenuIcon';
-import XIcon from '../icons/XIcon';
-import InfoIcon from '../icons/InfoIcon';
-import EventsView from './user/EventsView';
-import AudioGuidesView from './user/AudioGuidesView';
-import DirectoryView from './user/DirectoryView';
-import UsefulReferencesView from './user/UsefulReferencesView';
-import AdminDashboard from './admin/AdminDashboard';
+import { AuthContext } from '../../contexts/AuthContext.ts';
+import { User, UserRole, Event, AudioGuide, DirectoryMember, Booking, UsefulReference } from '../../types.ts';
+import Button from '../ui/Button.tsx';
+import SquareCompassIcon from '../icons/SquareCompassIcon.tsx';
+import CalendarIcon from '../icons/CalendarIcon.tsx';
+import MusicIcon from '../icons/MusicIcon.tsx';
+import UsersIcon from '../icons/UsersIcon.tsx';
+import SettingsIcon from '../icons/SettingsIcon.tsx';
+import MenuIcon from '../icons/MenuIcon.tsx';
+import XIcon from '../icons/XIcon.tsx';
+import InfoIcon from '../icons/InfoIcon.tsx';
+import EventsView from './user/EventsView.tsx';
+import AudioGuidesView from './user/AudioGuidesView.tsx';
+import DirectoryView from './user/DirectoryView.tsx';
+import UsefulReferencesView from './user/UsefulReferencesView.tsx';
+import AdminDashboard from './admin/AdminDashboard.tsx';
 
 type View = 'events' | 'audio' | 'directory' | 'references' | 'admin';
 
@@ -46,11 +46,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
   const [activeView, setActiveView] = useState<View>('events');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // All state management has been lifted to App.tsx.
-  // This component now receives state and setters as props.
-  // The handlers below now operate on the props passed down from App.tsx.
-
-  // User Handlers
+  // Handlers logic...
   const handleAddUser = (user: Omit<User, 'uid'>) => {
     const newUser = { ...user, uid: `user-${Date.now()}`};
     setUsers(prev => [...prev, newUser]);
@@ -68,7 +64,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({
     }
   };
 
-  // Event Handlers
   const handleAddEvent = (event: Omit<Event, 'id'>) => {
     const newEvent = { ...event, id: `evt-${Date.now()}`};
     setEvents(prev => [...prev, newEvent]);
@@ -79,11 +74,10 @@ const MainLayout: React.FC<MainLayoutProps> = ({
   const handleDeleteEvent = (eventId: string) => {
     if (window.confirm('Sei sicuro di voler eliminare questo evento?')) {
         setEvents(prev => prev.filter(e => e.id !== eventId));
-        setBookings(prev => prev.filter(b => b.eventId !== eventId)); // Also remove associated bookings
+        setBookings(prev => prev.filter(b => b.eventId !== eventId)); 
     }
   };
 
-  // Audio Guide Handlers
   const handleAddAudioGuide = (guide: Omit<AudioGuide, 'id'>) => {
     const newGuide = { ...guide, id: `ag-${Date.now()}`};
     setAudioGuides(prev => [...prev, newGuide]);
@@ -97,7 +91,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({
     }
   };
 
-  // Directory Handlers
   const handleAddDirectoryMember = (member: Omit<DirectoryMember, 'id'>) => {
     const newMember = { ...member, id: `dir-${Date.now()}`};
     setDirectory(prev => [...prev, newMember]);
@@ -111,7 +104,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({
     }
   };
 
-  // Useful Reference Handlers
   const handleAddUsefulReference = (ref: Omit<UsefulReference, 'id'>) => {
     const newRef = { ...ref, id: `ref-${Date.now()}`};
     setUsefulReferences(prev => [...prev, newRef]);
@@ -133,7 +125,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
     <button
       onClick={() => {
         setActiveView(view);
-        setIsMobileMenuOpen(false); // Close menu on selection (mobile)
+        setIsMobileMenuOpen(false);
       }}
       className={`flex items-center w-full px-4 py-3 transition-colors duration-200 ${
         activeView === view
@@ -149,7 +141,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({
   return (
     <div className="flex h-screen bg-gray-900 text-gray-100 overflow-hidden">
       
-      {/* Mobile Overlay Backdrop */}
       {isMobileMenuOpen && (
         <div 
           className="fixed inset-0 z-20 bg-black bg-opacity-50 lg:hidden backdrop-blur-sm"
@@ -157,7 +148,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({
         ></div>
       )}
 
-      {/* Sidebar Navigation */}
       <aside className={`
           fixed inset-y-0 left-0 z-30 w-64 flex flex-col bg-gray-800 
           transform transition-transform duration-300 ease-in-out shadow-2xl
@@ -169,7 +159,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({
             <SquareCompassIcon className="w-8 h-8 text-amber-500" />
             <h1 className="ml-2 text-xl font-bold hidden sm:block lg:block">Oriente D117</h1>
           </div>
-          {/* Close Button for Mobile */}
           <button 
             onClick={() => setIsMobileMenuOpen(false)} 
             className="lg:hidden text-gray-400 hover:text-white"
@@ -199,9 +188,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
         </div>
       </aside>
 
-      {/* Main Content Container */}
       <div className="flex-1 flex flex-col min-w-0">
-        {/* Mobile Header */}
         <header className="flex items-center justify-between h-16 px-4 bg-gray-800 border-b border-gray-700 lg:hidden">
           <div className="flex items-center">
             <SquareCompassIcon className="w-6 h-6 text-amber-500" />
@@ -215,7 +202,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({
           </button>
         </header>
 
-        {/* Content Area */}
         <main className="flex-1 p-4 lg:p-10 overflow-y-auto scroll-smooth">
             <div className="max-w-7xl mx-auto">
                 {activeView === 'events' && <EventsView events={events} bookings={bookings} setBookings={setBookings} />}

@@ -1,7 +1,8 @@
+
 import React, { useState, useEffect } from 'react';
-import { DirectoryMember } from '../../../types';
-import Button from '../../ui/Button';
-import Input from '../../ui/Input';
+import { DirectoryMember } from '../../../types.ts';
+import Button from '../../ui/Button.tsx';
+import Input from '../../ui/Input.tsx';
 
 interface DirectoryMemberFormProps {
     member: DirectoryMember | Omit<DirectoryMember, 'id'> | null;
@@ -50,7 +51,6 @@ const DirectoryMemberForm: React.FC<DirectoryMemberFormProps> = ({ member, onSav
         </div>
     );
 };
-
 
 interface DirectoryManagementProps {
     directory: DirectoryMember[];

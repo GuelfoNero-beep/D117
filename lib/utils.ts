@@ -1,5 +1,5 @@
 
-import { Event } from '../types';
+import { Event } from '../types.ts';
 
 export const formatDateRange = (start: Date, end: Date): string => {
   const options: Intl.DateTimeFormatOptions = {
@@ -11,7 +11,6 @@ export const formatDateRange = (start: Date, end: Date): string => {
   return `${startDate} - ${endDate}`;
 };
 
-// Function to format date to UTC YYYYMMDDTHHMMSSZ format for .ics file
 const toICSDate = (date: Date): string => {
   return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
 };

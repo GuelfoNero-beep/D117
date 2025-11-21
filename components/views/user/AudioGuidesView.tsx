@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useMemo } from 'react';
-import { AudioGuide } from '../../../types';
+import { AudioGuide } from '../../../types.ts';
 
 const AudioPlayer: React.FC<{ guide: AudioGuide; isPlaying: boolean; onPlayPause: () => void; }> = ({ guide, isPlaying, onPlayPause }) => {
   return (
@@ -44,16 +44,8 @@ const AudioGuidesView: React.FC<AudioGuidesViewProps> = ({ guides }) => {
         if (audioRef.current) {
             audioRef.current.pause();
         }
-        // This is a mock; in a real app, urlAudio would point to a real file.
-        // We simulate this by creating a silent audio context as a placeholder.
-        // The UI will still reflect the play/pause state.
-        // For a real demo, you'd need actual audio files at the specified paths.
         alert(`In a real app, this would play ${guide.urlAudio}. For now, we are simulating the player UI.`);
         setCurrentPlaying(guide.id);
-        // This part won't work in this environment but shows the logic
-        // audioRef.current = new Audio(guide.urlAudio);
-        // audioRef.current.play();
-        // audioRef.current.onended = () => setCurrentPlaying(null);
     }
   };
 

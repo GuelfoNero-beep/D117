@@ -1,9 +1,9 @@
 
 import React, { useState, useContext } from 'react';
-import Button from '../ui/Button';
-import Input from '../ui/Input';
-import SquareCompassIcon from '../icons/SquareCompassIcon';
-import { AuthContext } from '../../contexts/AuthContext';
+import Button from '../ui/Button.tsx';
+import Input from '../ui/Input.tsx';
+import SquareCompassIcon from '../icons/SquareCompassIcon.tsx';
+import { AuthContext } from '../../contexts/AuthContext.ts';
 
 const Login: React.FC = () => {
   const [nickname, setNickname] = useState('');

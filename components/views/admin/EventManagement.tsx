@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Event } from '../../../types';
-import Button from '../../ui/Button';
-import Input from '../../ui/Input';
 
-// FIX: Define a separate type for the form data to handle string dates for input fields.
+import React, { useState, useEffect } from 'react';
+import { Event } from '../../../types.ts';
+import Button from '../../ui/Button.tsx';
+import Input from '../../ui/Input.tsx';
+
 type EventFormData = Omit<Event, 'id' | 'dataInizio' | 'dataFine'> & {
     id?: string;
     dataInizio: string;
@@ -11,19 +11,16 @@ type EventFormData = Omit<Event, 'id' | 'dataInizio' | 'dataFine'> & {
 };
 
 interface EventFormProps {
-    // FIX: Simplify the event prop to accept only types with Date objects, which matches what the parent component provides.
     event: Event | Omit<Event, 'id'> | null;
     onSave: (event: Event | Omit<Event, 'id'>) => void;
     onCancel: () => void;
 }
 
 const EventForm: React.FC<EventFormProps> = ({ event, onSave, onCancel }) => {
-    // FIX: Use the new EventFormData type for the form state to avoid type conflicts.
     const [formData, setFormData] = useState<EventFormData | null>(null);
     const isEditing = event && 'id' in event;
 
     useEffect(() => {
-        // FIX: Consistently convert Date objects from props to a string format required by datetime-local inputs.
         if (event) {
             const convertDate = (date: Date) => {
                 const pad = (num: number) => num.toString().padStart(2, '0');
@@ -45,7 +42,6 @@ const EventForm: React.FC<EventFormProps> = ({ event, onSave, onCancel }) => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (formData) {
-            // FIX: Convert string dates from the form back to Date objects before saving.
             const dataToSave = {
                 ...formData,
                 dataInizio: new Date(formData.dataInizio),
@@ -68,12 +64,10 @@ const EventForm: React.FC<EventFormProps> = ({ event, onSave, onCancel }) => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label htmlFor="dataInizio" className="block text-sm font-medium text-gray-300 mb-1">Inizio Evento</label>
-                        {/* FIX: The value is now correctly a string, resolving the error. */}
                         <Input id="dataInizio" name="dataInizio" type="datetime-local" value={formData.dataInizio} onChange={handleChange} required />
                     </div>
                     <div>
                         <label htmlFor="dataFine" className="block text-sm font-medium text-gray-300 mb-1">Fine Evento</label>
-                        {/* FIX: The value is now correctly a string, resolving the error. */}
                         <Input id="dataFine" name="dataFine" type="datetime-local" value={formData.dataFine} onChange={handleChange} required />
                     </div>
                 </div>
@@ -85,7 +79,6 @@ const EventForm: React.FC<EventFormProps> = ({ event, onSave, onCancel }) => {
         </div>
     );
 };
-
 
 interface EventManagementProps {
     events: Event[];
@@ -132,7 +125,6 @@ const EventManagement: React.FC<EventManagementProps> = ({ events, onAdd, onUpda
             
             {isFormVisible && (
                 <EventForm 
-                    // FIX: This prop passing is now type-correct due to the change in EventFormProps, resolving the assignment error.
                     event={editingEvent || emptyEvent}
                     onSave={handleSave}
                     onCancel={() => setIsFormVisible(false)}

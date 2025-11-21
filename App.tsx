@@ -1,12 +1,11 @@
 
 import React, { useState, useCallback, useMemo, useEffect } from 'react';
-import { User, Event, AudioGuide, DirectoryMember, Booking, UsefulReference } from './types';
-import { MOCK_USERS, MOCK_EVENTS, MOCK_AUDIO_GUIDES, MOCK_DIRECTORY, MOCK_BOOKINGS, MOCK_USEFUL_REFERENCES } from './constants';
-import Login from './components/views/Login';
-import MainLayout from './components/views/MainLayout';
-import { AuthContext } from './contexts/AuthContext';
+import { User, Event, AudioGuide, DirectoryMember, Booking, UsefulReference } from './types.ts';
+import { MOCK_USERS, MOCK_EVENTS, MOCK_AUDIO_GUIDES, MOCK_DIRECTORY, MOCK_BOOKINGS, MOCK_USEFUL_REFERENCES } from './constants.ts';
+import Login from './components/views/Login.tsx';
+import MainLayout from './components/views/MainLayout.tsx';
+import { AuthContext } from './contexts/AuthContext.ts';
 
-// Helper to get data from localStorage or fallback to mock data
 function getInitialState<T>(key: string, mockData: T[], dateFields: string[] = []): T[] {
     try {
         const item = window.localStorage.getItem(key);
@@ -31,11 +30,9 @@ function getInitialState<T>(key: string, mockData: T[], dateFields: string[] = [
     return mockData;
 }
 
-
 const App: React.FC = () => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
 
-  // State is now managed at the top level of the app
   const [users, setUsers] = useState<User[]>(() => getInitialState('app_users', MOCK_USERS));
   const [events, setEvents] = useState<Event[]>(() => getInitialState('app_events', MOCK_EVENTS, ['dataInizio', 'dataFine']));
   const [audioGuides, setAudioGuides] = useState<AudioGuide[]>(() => getInitialState('app_audioGuides', MOCK_AUDIO_GUIDES));
@@ -43,7 +40,6 @@ const App: React.FC = () => {
   const [bookings, setBookings] = useState<Booking[]>(() => getInitialState('app_bookings', MOCK_BOOKINGS, ['dataPrenotazione']));
   const [usefulReferences, setUsefulReferences] = useState<UsefulReference[]>(() => getInitialState('app_references', MOCK_USEFUL_REFERENCES));
 
-  // useEffect hooks to save state changes to localStorage
   useEffect(() => { localStorage.setItem('app_users', JSON.stringify(users)); }, [users]);
   useEffect(() => { localStorage.setItem('app_events', JSON.stringify(events)); }, [events]);
   useEffect(() => { localStorage.setItem('app_audioGuides', JSON.stringify(audioGuides)); }, [audioGuides]);
@@ -52,10 +48,7 @@ const App: React.FC = () => {
   useEffect(() => { localStorage.setItem('app_references', JSON.stringify(usefulReferences)); }, [usefulReferences]);
 
   const handleLogin = useCallback((nickname: string, password: string) => {
-    // FIX: Use the 'users' state, which includes new users, instead of MOCK_USERS.
     const user = users.find(u => u.nickname === nickname);
-    
-    // FIX: Verify the password.
     if (user && user.passwordHash === password) {
       setCurrentUser(user);
       return true;

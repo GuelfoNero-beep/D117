@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { UsefulReference } from '../../../types';
+import { UsefulReference } from '../../../types.ts';
 
 interface UsefulReferencesViewProps {
   references: UsefulReference[];

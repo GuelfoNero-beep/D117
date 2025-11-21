@@ -1,8 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
-import { UsefulReference } from '../../../types';
-import Button from '../../ui/Button';
-import Input from '../../ui/Input';
+import { UsefulReference } from '../../../types.ts';
+import Button from '../../ui/Button.tsx';
+import Input from '../../ui/Input.tsx';
 
 interface UsefulReferenceFormProps {
     reference: UsefulReference | Omit<UsefulReference, 'id'> | null;
@@ -54,7 +54,6 @@ const UsefulReferenceForm: React.FC<UsefulReferenceFormProps> = ({ reference, on
         </div>
     );
 };
-
 
 interface UsefulReferenceManagementProps {
     references: UsefulReference[];

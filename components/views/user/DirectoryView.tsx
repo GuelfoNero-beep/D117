@@ -1,7 +1,7 @@
 
 import React, { useState, useMemo } from 'react';
-import { DirectoryMember } from '../../../types';
-import Input from '../../ui/Input';
+import { DirectoryMember } from '../../../types.ts';
+import Input from '../../ui/Input.tsx';
 
 interface DirectoryViewProps {
   directory: DirectoryMember[];

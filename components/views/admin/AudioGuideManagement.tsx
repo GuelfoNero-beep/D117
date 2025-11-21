@@ -1,7 +1,8 @@
+
 import React, { useState, useEffect } from 'react';
-import { AudioGuide } from '../../../types';
-import Button from '../../ui/Button';
-import Input from '../../ui/Input';
+import { AudioGuide } from '../../../types.ts';
+import Button from '../../ui/Button.tsx';
+import Input from '../../ui/Input.tsx';
 
 interface AudioGuideFormProps {
     guide: AudioGuide | Omit<AudioGuide, 'id'> | null;
@@ -48,7 +49,6 @@ const AudioGuideForm: React.FC<AudioGuideFormProps> = ({ guide, onSave, onCancel
         </div>
     );
 };
-
 
 interface AudioGuideManagementProps {
     guides: AudioGuide[];

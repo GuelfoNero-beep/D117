@@ -1,5 +1,5 @@
 
-import { User, UserRole, Event, AudioGuide, DirectoryMember, Booking, UsefulReference } from './types';
+import { User, UserRole, Event, AudioGuide, DirectoryMember, Booking, UsefulReference } from './types.ts';
 
 export const MOCK_USERS: User[] = [
   { uid: 'admin01', nome: 'Maestro', cognome: 'Venerabile', telefono: '111222333', nickname: 'admin', passwordHash: 'admin', ruolo: UserRole.ADMIN },
@@ -14,15 +14,15 @@ export const MOCK_EVENTS: Event[] = [
     nome: 'Tornata Rituale',
     descrizione: 'Lavori rituali nel tempio. Si prega di arrivare con 15 minuti di anticipo. Seguirà un\'agape fraterna.',
     urlImmagine: 'https://picsum.photos/seed/masonic1/800/400',
-    dataInizio: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000), // Next week
+    dataInizio: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000), 
     dataFine: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000 + 2 * 60 * 60 * 1000),
   },
   { 
     id: 'evt02',
-    nome: 'Conferenza Pubblica: Simbolismo e Società',
+    nome: 'Conferenza Pubblica: Simbolismo',
     descrizione: 'Una conferenza aperta al pubblico sul ruolo del simbolismo nella società moderna. Relatore: Prof. Bianchi.',
     urlImmagine: 'https://picsum.photos/seed/masonic2/800/400',
-    dataInizio: new Date(new Date().getTime() + 14 * 24 * 60 * 60 * 1000), // In 2 weeks
+    dataInizio: new Date(new Date().getTime() + 14 * 24 * 60 * 60 * 1000), 
     dataFine: new Date(new Date().getTime() + 14 * 24 * 60 * 60 * 1000 + 90 * 60 * 1000),
   },
   { 
@@ -30,7 +30,7 @@ export const MOCK_EVENTS: Event[] = [
     nome: 'Solstizio d\'Estate',
     descrizione: 'Celebrazione del Solstizio d\'Estate con una tornata speciale seguita da una cena all\'aperto.',
     urlImmagine: 'https://picsum.photos/seed/masonic3/800/400',
-    dataInizio: new Date(new Date().getTime() + 30 * 24 * 60 * 60 * 1000), // In 1 month
+    dataInizio: new Date(new Date().getTime() + 30 * 24 * 60 * 60 * 1000), 
     dataFine: new Date(new Date().getTime() + 30 * 24 * 60 * 60 * 1000 + 3 * 60 * 60 * 1000),
   }
 ];
