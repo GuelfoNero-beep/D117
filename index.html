@@ -31,21 +31,22 @@
       @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 
-    <!-- Import Map: Dice al browser dove trovare React -->
-    <script type="importmap">
+    <!-- React & ReactDOM (CDN) -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Babel Standalone (CDN) -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@18.2.0",
-    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
   }
 }
 </script>
-
-    <!-- Babel Standalone: Traduce i file .tsx in .js comprensibile al browser -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <link rel="stylesheet" href="/index.css">
+<link rel="stylesheet" href="/index.css">
 </head>
   <body class="bg-gray-900 text-gray-100">
     
@@ -54,8 +55,9 @@
     
     <div id="root"></div>
 
-    <!-- App Entry Point: Nota type="text/babel" e data-type="module" -->
-    <script type="text/babel" data-type="module" data-presets="react,typescript" src="./index.tsx"></script>
+    <!-- Main Application Logic -->
+    <!-- Carichiamo tutto il codice in un singolo blocco script elaborato da Babel -->
+    <script type="text/babel" data-presets="react,typescript" src="./main.tsx"></script>
 
     <script>
       // Service Worker per funzionamento offline
@@ -67,12 +69,14 @@
         });
       }
       
-      // Rimuove lo spinner quando React ha caricato (fallback)
+      // Timeout di sicurezza per rimuovere lo spinner se React ci mette troppo
       window.onload = () => {
         setTimeout(() => {
            const loader = document.getElementById('loading');
-           if(loader) loader.style.display = 'none';
-        }, 2000); // Timeout di sicurezza
+           // Non nascondiamo se root è vuoto, significa che sta ancora caricando
+           const root = document.getElementById('root');
+           if(loader && root && root.innerHTML !== "") loader.style.display = 'none';
+        }, 3000);
       }
     </script>
   <script type="module" src="/index.tsx"></script>

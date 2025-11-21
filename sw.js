@@ -1,18 +1,15 @@
 
-const CACHE_NAME = 'oriented117-cache-v3';
+const CACHE_NAME = 'oriented117-cache-v4';
 const urlsToCache = [
   './',
   './index.html',
-  './index.tsx',
-  './App.tsx',
-  './constants.ts',
-  './types.ts',
+  './main.tsx',
   './icon-192x192.png',
   './manifest.json'
 ];
 
 self.addEventListener('install', event => {
-  self.skipWaiting(); // Force update
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
@@ -26,9 +23,7 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
       .then(response => {
-        if (response) {
-          return response;
-        }
+        if (response) return response;
         return fetch(event.request);
       })
   );
