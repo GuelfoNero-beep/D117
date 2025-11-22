@@ -1,8 +1,13 @@
 
-export enum UserRole {
-  ADMIN = 'admin',
-  USER = 'user',
-}
+// Using a const assertion creates a safer runtime object than a standard enum
+// preventing "ReferenceError: UserRole is not defined" in some bundlers/environments.
+export const UserRole = {
+  ADMIN: 'admin',
+  USER: 'user',
+} as const;
+
+// Extract the type from the values of the const object
+export type UserRole = typeof UserRole[keyof typeof UserRole];
 
 export interface User {
   uid: string;

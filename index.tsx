@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
@@ -10,7 +9,15 @@ if (!rootElement) {
 
 // Hide loading spinner once React starts mounting
 const loader = document.getElementById('loading');
-if (loader) loader.style.display = 'none';
+if (loader) {
+    // Add a small delay for smooth transition
+    setTimeout(() => {
+        loader.style.opacity = '0';
+        setTimeout(() => {
+            loader.style.display = 'none';
+        }, 500);
+    }, 500);
+}
 
 const root = createRoot(rootElement);
 root.render(

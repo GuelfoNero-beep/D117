@@ -1,1 +1,1 @@
-// Logic moved to index.html
+// Entry point is handled by index.tsx
